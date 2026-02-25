@@ -1,5 +1,5 @@
 ### tf1.x查看pb文件所有input node name
-```
+```python
 import tensorflow as tf
 
 def inspect_pb_inputs(pb_file_path):
