@@ -10,14 +10,14 @@ einops可以将tensor维度相关变化的代码变得更加清晰，写法容�
 
 #### 导入第三方库
 
-```
+```python
 import torch
 from einops import rearrange, reduce, repeat
 ```
 
 #### rearrange
 
-```
+```python
 # transpose
 x = torch.rand((2, 3, 4, 5))
 out1 = rearrange(x, 'bs ic h w -> bs h ic w')  # <==> x.transpose(1, 2)
@@ -48,7 +48,7 @@ print(torch.equal(out6, torch.unsqueeze(x, dim=-1)))
 
 #### reduce
 
-```
+```python
 # 平均池化
 x = torch.rand((2, 3, 4, 5))
 # 最后一维平均池化
@@ -68,7 +68,7 @@ print(out3.shape)
 
 #### repeat
 
-```
+```python
 x = torch.rand((2, 3, 4, 5))
 out1 = rearrange(x, 'bs ic h w -> bs ic h w 1')
 out2 = repeat(out1, 'bs ic h w t -> bs ic h (2 w) (2 t)')
@@ -93,7 +93,7 @@ print(out2)
 | **只出现在输入、未出现在输出的索引**<br>表示在该维度上求和（reduce） | `ik,kj->ij` | 索引 `k` 最终未出现在输出 → 对 `k` 维度求和                  |
 | **输出维度的顺序可任意指定**<br>可方便地进行 permute         | `ik,kj->ji` | 把矩阵乘法结果再转置一次                                     |
 
-```
+```python
 # 内积
 x = torch.arange(3)
 print(torch.equal(einsum(x, x, 'i, i -> '), torch.inner(x, x)))
