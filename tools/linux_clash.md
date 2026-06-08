@@ -8,3 +8,8 @@ git clone --branch master --depth 1 https://gh-proxy.org/https://github.com/nelv
   && cd clash-for-linux-install \
   && bash install.sh
 ```
+
+### update bashrc
+```
+source ~/.bashrc 
+```
